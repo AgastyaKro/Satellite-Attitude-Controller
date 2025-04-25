@@ -12,3 +12,5 @@ main.cpp
 Satellite.cpp
 Controller.cpp
 Quaternion.cpp)
+
+target_link_libraries(SatelliteSim Eigen3::Eigen)

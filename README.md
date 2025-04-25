@@ -16,12 +16,12 @@ This kind of system is found in real spacecraft, from CubeSats to Starlink satel
 
 ## Features
 
-✅ Quaternion-based orientation tracking  
-✅ Rigid body physics with moment of inertia  
-✅ Time-stepped simulation loop  
-✅ Virtual torque input  
-✅ PID controller (in progress)  
-⬜ Optional 3D visualization (coming soon)  
+- Quaternion-based orientation tracking  
+- Rigid body physics with moment of inertia  
+- Time-stepped simulation loop  
+- Virtual torque input  
+- PID controller (in progress)  
+- Optional 3D visualization (coming soon)  
 
 ---
 
