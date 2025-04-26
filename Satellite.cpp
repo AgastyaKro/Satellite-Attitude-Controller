@@ -3,7 +3,9 @@
 
 Satellite::Satellite() : orientation(Eigen::Quaterniond::Identity()), // w,x,y,z = 1,0,0,0
                          angular_velocity(Eigen::Vector3d::Zero()), // x,y,z = 0,0,0
-                         inertia(Eigen::Matrix3d::Identity())
+                         inertia(Eigen::Matrix3d::Identity()) // 3 by 3 matrix, w/ diag as 1,1,1 else 0
+                                                              // it's equally hard to rotate across x,y,z axis
                          {}
+
 
 
