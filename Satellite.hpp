@@ -14,17 +14,12 @@ class Satellite {
 
     private:
 
-        Eigen::Quaterniond orientation; // current orientation
-        Eigen::Vector3d angular_velocity;
-        Eigen::Matrix3d inertia;
-        Eigen::Quaterniond target_orientation;
+        Eigen::Quaterniond orientation;     // current orientation
+        Eigen::Vector3d angular_velocity;   // in rad/s
+        Eigen::Matrix3d inertia;            // moment of inertia tensor
+        Eigen::Quaterniond target_orientation; 
 
         Eigen::Vector3d computeControlTorque(); // PID output
-
-
-
-
-
 
 
 };
