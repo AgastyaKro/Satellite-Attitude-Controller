@@ -8,4 +8,7 @@ Satellite::Satellite() : orientation(Eigen::Quaterniond::Identity()), // w,x,y,z
                          {}
 
 
-
+void Satellite::applyTorque(const Eigen::Vector3d& torque, double dt) { // torque + how long it was applied for
+        Eigen::Vector3d angular_acceleration = inertia.inverse() * torque; // T/I
+        angular_velocity += angular_acceleration * dt;
+    }
