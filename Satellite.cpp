@@ -11,4 +11,13 @@ Satellite::Satellite() : orientation(Eigen::Quaterniond::Identity()), // w,x,y,z
 void Satellite::applyTorque(const Eigen::Vector3d& torque, double dt) { // torque + how long it was applied for
         Eigen::Vector3d angular_acceleration = inertia.inverse() * torque; // T/I
         angular_velocity += angular_acceleration * dt;
-    }
+}
+
+
+void Satellite::update(double dt){
+    Eigen::Quaterniond omega(0, angular_velocity[0], angular_velocity[1], angular_velocity[2]);
+    Eigen::Quaterniond smallRotation = (omega * orientation);
+    smallRotation.coeffs() *= 0.5 * dt;
+    orientation.coeffs() += smallRotation.coeffs();
+    orientation.normalize();
+}
