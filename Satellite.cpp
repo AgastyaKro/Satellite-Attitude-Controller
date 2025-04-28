@@ -15,9 +15,22 @@ void Satellite::applyTorque(const Eigen::Vector3d& torque, double dt) { // torqu
 
 
 void Satellite::update(double dt){
-    Eigen::Quaterniond omega(0, angular_velocity[0], angular_velocity[1], angular_velocity[2]);
-    Eigen::Quaterniond smallRotation = (omega * orientation);
-    smallRotation.coeffs() *= 0.5 * dt;
-    orientation.coeffs() += smallRotation.coeffs();
-    orientation.normalize();
+    Eigen::Quaterniond omega(0, angular_velocity[0], angular_velocity[1], angular_velocity[2]); // angular vel -> quarternion
+    Eigen::Quaterniond smallRotation = (omega * orientation); // how orientation changes right now derivative
+    smallRotation.coeffs() *= 0.5 * dt; // scales derivative to time step
+    orientation.coeffs() += smallRotation.coeffs(); // applies the small rotation
+    orientation.normalize(); // normalizes to remove math error build-up
 }
+
+void Satellite::setTargetOrientation(const Eigen::Quaterniond& target){
+    target_orientation = target; 
+}
+
+Eigen::Quaterniond Satellite::getOrientation() const{
+    return orientation;
+}
+
+Eigen::Vector3d Satellite::getAngularVelocity() const {
+    return angular_velocity;
+}
+
