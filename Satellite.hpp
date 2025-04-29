@@ -5,7 +5,7 @@ class Satellite {
     public:
         Satellite();
 
-        void applyTorque(const Eigen::Vector3d& torque, double dt); // gets our angular velocity
+        void applyTorque(const Eigen::Vector3d& torque, double dt); // applies torque and stores angular velocity
         void update(double dt); // updates the satellite orientation 
 
         void setTargetOrientation(const Eigen::Quaterniond& target);
