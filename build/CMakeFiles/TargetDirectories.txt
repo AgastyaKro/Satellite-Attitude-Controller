@@ -1,0 +1,3 @@
+/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles/SatelliteSim.dir
+/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles/edit_cache.dir
+/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles/rebuild_cache.dir
