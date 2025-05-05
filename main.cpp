@@ -1,4 +1,5 @@
 #include "Satellite.hpp"
+#include "Controller.hpp"
 #include <Eigen/Geometry>
 #include <iostream>
 
@@ -10,9 +11,21 @@ int main() {
     Eigen::Quaterniond target(rot);
     sat.setTargetOrientation(target);
 
+    // may need tunning
+    double kp = 2.0; 
+    double kd = 1.2;
+    double ki = 0.5;
+    Controller controller(kp, kd, ki);
+
+
     const double dt = 0.01;
     for (int i = 0; i < 500; i++){
-        Eigen::Vector3d torque = Eigen::Vector3d(0, 0.01, 0);
+        Eigen::Vector3d torque = controller.compute_torque(
+            sat.getOrientation(),
+            target,
+            sat.getAngularVelocity(),
+            dt
+        );
         sat.applyTorque(torque,dt);
         sat.update(dt);
 
