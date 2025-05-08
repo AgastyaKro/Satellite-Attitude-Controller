@@ -22,6 +22,8 @@ class Satellite {
         Eigen::Matrix3d inertia;            // moment of inertia tensor
         Eigen::Quaterniond target_orientation; 
         std::vector<ReactionWheel> wheels; // 1 wheel per axis, x,y,z
+        Eigen::Matrix3d inertia_tensor_inv;
+
 
         Eigen::Vector3d computeControlTorque(); // PID output
         void applyBodyTorque(const Eigen::Vector3d& torque, double dt);
