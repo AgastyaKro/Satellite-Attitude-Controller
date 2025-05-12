@@ -97,48 +97,48 @@ CMakeFiles/SatelliteSim.dir/Satellite.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SatelliteSim.dir/Satellite.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Satellite.cpp -o CMakeFiles/SatelliteSim.dir/Satellite.cpp.s
 
-CMakeFiles/SatelliteSim.dir/Controller.cpp.o: CMakeFiles/SatelliteSim.dir/flags.make
-CMakeFiles/SatelliteSim.dir/Controller.cpp.o: /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Controller.cpp
-CMakeFiles/SatelliteSim.dir/Controller.cpp.o: CMakeFiles/SatelliteSim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SatelliteSim.dir/Controller.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SatelliteSim.dir/Controller.cpp.o -MF CMakeFiles/SatelliteSim.dir/Controller.cpp.o.d -o CMakeFiles/SatelliteSim.dir/Controller.cpp.o -c /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Controller.cpp
+CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o: CMakeFiles/SatelliteSim.dir/flags.make
+CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o: /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/ReactionWheel.cpp
+CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o: CMakeFiles/SatelliteSim.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o -MF CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o.d -o CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o -c /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/ReactionWheel.cpp
 
-CMakeFiles/SatelliteSim.dir/Controller.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SatelliteSim.dir/Controller.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Controller.cpp > CMakeFiles/SatelliteSim.dir/Controller.cpp.i
+CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/ReactionWheel.cpp > CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.i
 
-CMakeFiles/SatelliteSim.dir/Controller.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SatelliteSim.dir/Controller.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Controller.cpp -o CMakeFiles/SatelliteSim.dir/Controller.cpp.s
+CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/ReactionWheel.cpp -o CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.s
 
-CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o: CMakeFiles/SatelliteSim.dir/flags.make
-CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o: /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Quaternion.cpp
-CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o: CMakeFiles/SatelliteSim.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o -MF CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o.d -o CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o -c /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Quaternion.cpp
+CMakeFiles/SatelliteSim.dir/WheelController.cpp.o: CMakeFiles/SatelliteSim.dir/flags.make
+CMakeFiles/SatelliteSim.dir/WheelController.cpp.o: /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/WheelController.cpp
+CMakeFiles/SatelliteSim.dir/WheelController.cpp.o: CMakeFiles/SatelliteSim.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SatelliteSim.dir/WheelController.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SatelliteSim.dir/WheelController.cpp.o -MF CMakeFiles/SatelliteSim.dir/WheelController.cpp.o.d -o CMakeFiles/SatelliteSim.dir/WheelController.cpp.o -c /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/WheelController.cpp
 
-CMakeFiles/SatelliteSim.dir/Quaternion.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SatelliteSim.dir/Quaternion.cpp.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Quaternion.cpp > CMakeFiles/SatelliteSim.dir/Quaternion.cpp.i
+CMakeFiles/SatelliteSim.dir/WheelController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/SatelliteSim.dir/WheelController.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/WheelController.cpp > CMakeFiles/SatelliteSim.dir/WheelController.cpp.i
 
-CMakeFiles/SatelliteSim.dir/Quaternion.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SatelliteSim.dir/Quaternion.cpp.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Quaternion.cpp -o CMakeFiles/SatelliteSim.dir/Quaternion.cpp.s
+CMakeFiles/SatelliteSim.dir/WheelController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/SatelliteSim.dir/WheelController.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/WheelController.cpp -o CMakeFiles/SatelliteSim.dir/WheelController.cpp.s
 
 # Object files for target SatelliteSim
 SatelliteSim_OBJECTS = \
 "CMakeFiles/SatelliteSim.dir/main.cpp.o" \
 "CMakeFiles/SatelliteSim.dir/Satellite.cpp.o" \
-"CMakeFiles/SatelliteSim.dir/Controller.cpp.o" \
-"CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o"
+"CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o" \
+"CMakeFiles/SatelliteSim.dir/WheelController.cpp.o"
 
 # External object files for target SatelliteSim
 SatelliteSim_EXTERNAL_OBJECTS =
 
 SatelliteSim: CMakeFiles/SatelliteSim.dir/main.cpp.o
 SatelliteSim: CMakeFiles/SatelliteSim.dir/Satellite.cpp.o
-SatelliteSim: CMakeFiles/SatelliteSim.dir/Controller.cpp.o
-SatelliteSim: CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o
+SatelliteSim: CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o
+SatelliteSim: CMakeFiles/SatelliteSim.dir/WheelController.cpp.o
 SatelliteSim: CMakeFiles/SatelliteSim.dir/build.make
 SatelliteSim: CMakeFiles/SatelliteSim.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable SatelliteSim"

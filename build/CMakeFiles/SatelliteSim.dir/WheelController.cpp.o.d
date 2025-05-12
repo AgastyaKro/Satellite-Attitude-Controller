@@ -1,6 +1,6 @@
-CMakeFiles/SatelliteSim.dir/Satellite.cpp.o: \
-  /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Satellite.cpp \
-  /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Satellite.hpp \
+CMakeFiles/SatelliteSim.dir/WheelController.cpp.o: \
+  /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/WheelController.cpp \
+  /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/WheelController.hpp \
   /opt/homebrew/include/eigen3/Eigen/Dense \
   /opt/homebrew/include/eigen3/Eigen/Core \
   /opt/homebrew/include/eigen3/Eigen/src/Core/util/DisableStupidWarnings.h \
@@ -1070,5 +1070,4 @@ CMakeFiles/SatelliteSim.dir/Satellite.cpp.o: \
   /opt/homebrew/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h \
   /opt/homebrew/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h \
   /opt/homebrew/include/eigen3/Eigen/src/Eigenvalues/./RealQZ.h \
-  /opt/homebrew/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h \
-  /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/ReactionWheel.hpp
+  /opt/homebrew/include/eigen3/Eigen/src/Eigenvalues/MatrixBaseEigenvalues.h

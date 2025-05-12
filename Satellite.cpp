@@ -34,9 +34,9 @@ void Satellite::applyBodyTorque(const Eigen::Vector3d& torque, double dt){
 
 void Satellite::update(double dt){
     Eigen::Quaterniond omega(0, angular_velocity[0], angular_velocity[1], angular_velocity[2]); // angular vel -> quarternion
-    Eigen::Quaterniond smallRotation = (omega * orientation); // how orientation changes right now derivative
-    smallRotation.coeffs() *= 0.5 * dt; // scales derivative to time step
-    orientation.coeffs() += smallRotation.coeffs(); // applies the small rotation
+    Eigen::Quaterniond delta_rotation = (omega * orientation); // how orientation changes right now derivative
+    delta_rotation.coeffs() *= 0.5 * dt; // scales derivative to time step, ie quarternion math
+    orientation.coeffs() += delta_rotation.coeffs(); // applies the small rotation
     orientation.normalize(); // normalizes to remove math error build-up
 }
 

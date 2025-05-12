@@ -129,53 +129,29 @@ SatelliteSim/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/build
 .PHONY : SatelliteSim/fast
 
-Controller.o: Controller.cpp.o
-.PHONY : Controller.o
+ReactionWheel.o: ReactionWheel.cpp.o
+.PHONY : ReactionWheel.o
 
 # target to build an object file
-Controller.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Controller.cpp.o
-.PHONY : Controller.cpp.o
+ReactionWheel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o
+.PHONY : ReactionWheel.cpp.o
 
-Controller.i: Controller.cpp.i
-.PHONY : Controller.i
-
-# target to preprocess a source file
-Controller.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Controller.cpp.i
-.PHONY : Controller.cpp.i
-
-Controller.s: Controller.cpp.s
-.PHONY : Controller.s
-
-# target to generate assembly for a file
-Controller.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Controller.cpp.s
-.PHONY : Controller.cpp.s
-
-Quaternion.o: Quaternion.cpp.o
-.PHONY : Quaternion.o
-
-# target to build an object file
-Quaternion.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Quaternion.cpp.o
-.PHONY : Quaternion.cpp.o
-
-Quaternion.i: Quaternion.cpp.i
-.PHONY : Quaternion.i
+ReactionWheel.i: ReactionWheel.cpp.i
+.PHONY : ReactionWheel.i
 
 # target to preprocess a source file
-Quaternion.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Quaternion.cpp.i
-.PHONY : Quaternion.cpp.i
+ReactionWheel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.i
+.PHONY : ReactionWheel.cpp.i
 
-Quaternion.s: Quaternion.cpp.s
-.PHONY : Quaternion.s
+ReactionWheel.s: ReactionWheel.cpp.s
+.PHONY : ReactionWheel.s
 
 # target to generate assembly for a file
-Quaternion.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Quaternion.cpp.s
-.PHONY : Quaternion.cpp.s
+ReactionWheel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.s
+.PHONY : ReactionWheel.cpp.s
 
 Satellite.o: Satellite.cpp.o
 .PHONY : Satellite.o
@@ -200,6 +176,30 @@ Satellite.s: Satellite.cpp.s
 Satellite.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Satellite.cpp.s
 .PHONY : Satellite.cpp.s
+
+WheelController.o: WheelController.cpp.o
+.PHONY : WheelController.o
+
+# target to build an object file
+WheelController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/WheelController.cpp.o
+.PHONY : WheelController.cpp.o
+
+WheelController.i: WheelController.cpp.i
+.PHONY : WheelController.i
+
+# target to preprocess a source file
+WheelController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/WheelController.cpp.i
+.PHONY : WheelController.cpp.i
+
+WheelController.s: WheelController.cpp.s
+.PHONY : WheelController.s
+
+# target to generate assembly for a file
+WheelController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/WheelController.cpp.s
+.PHONY : WheelController.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -234,15 +234,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SatelliteSim"
-	@echo "... Controller.o"
-	@echo "... Controller.i"
-	@echo "... Controller.s"
-	@echo "... Quaternion.o"
-	@echo "... Quaternion.i"
-	@echo "... Quaternion.s"
+	@echo "... ReactionWheel.o"
+	@echo "... ReactionWheel.i"
+	@echo "... ReactionWheel.s"
 	@echo "... Satellite.o"
 	@echo "... Satellite.i"
 	@echo "... Satellite.s"
+	@echo "... WheelController.o"
+	@echo "... WheelController.i"
+	@echo "... WheelController.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

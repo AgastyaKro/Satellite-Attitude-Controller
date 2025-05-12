@@ -10,7 +10,9 @@ include_directories(${EIGEN3_INCLUDE_DIR})
 add_executable(SatelliteSim
 main.cpp
 Satellite.cpp
-Controller.cpp
-Quaternion.cpp)
+ReactionWheel.cpp
+WheelController.cpp
+
+)
 
 target_link_libraries(SatelliteSim Eigen3::Eigen)
