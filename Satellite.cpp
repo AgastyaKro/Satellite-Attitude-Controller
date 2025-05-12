@@ -3,8 +3,6 @@
 
 Satellite::Satellite() : orientation(Eigen::Quaterniond::Identity()), // w,x,y,z = 1,0,0,0
                          angular_velocity(Eigen::Vector3d::Zero()), // x,y,z = 0,0,0
-                         inertia(Eigen::Matrix3d::Identity()), // 3 by 3 matrix, w/ diag as 1,1,1 else 0
-                                                              // it's equally hard to rotate across x,y,z axis
                          inertia_tensor_inv(Eigen::Matrix3d::Identity().inverse()),
                          wheels{ ReactionWheel(0.1), ReactionWheel(0.1), ReactionWheel(0.1)}
                          {}
@@ -25,8 +23,12 @@ void Satellite::applyWheelTorque(int wheel_index, double torque, double dt){
     // applying reaction torque to the satellite
     Eigen::Vector3d torque_vector = Eigen::Vector3d::Zero();
     torque_vector[wheel_index] = wheels[wheel_index].getReactionTorque();
-
     applyBodyTorque(torque_vector, dt);
+}
+
+void Satellite::applyBodyTorque(const Eigen::Vector3d& torque, double dt){
+    Eigen::Vector3d angular_acceleration = inertia_tensor_inv * torque;
+    angular_velocity += angular_acceleration * dt;
 }
 
 
