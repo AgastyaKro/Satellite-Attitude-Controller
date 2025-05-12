@@ -15,6 +15,8 @@ class Satellite {
         void setTargetOrientation(const Eigen::Quaterniond& target);
         Eigen::Quaterniond getOrientation() const;
         Eigen::Vector3d getAngularVelocity() const;
+        double getWheelSpeed(int wheel_index) const;  
+
 
     private:
 

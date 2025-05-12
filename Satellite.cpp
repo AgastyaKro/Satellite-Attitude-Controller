@@ -26,6 +26,13 @@ void Satellite::applyWheelTorque(int wheel_index, double torque, double dt){
     applyBodyTorque(torque_vector, dt);
 }
 
+double Satellite::getWheelSpeed(int wheel_index) const {
+    if (wheel_index >= 0 && wheel_index < wheels.size()) {
+        return wheels[wheel_index].getAngularVelocity();
+    }
+    return 0.0;
+}
+
 void Satellite::applyBodyTorque(const Eigen::Vector3d& torque, double dt){
     Eigen::Vector3d angular_acceleration = inertia_tensor_inv * torque;
     angular_velocity += angular_acceleration * dt;

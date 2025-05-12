@@ -1,3 +1,4 @@
+
 #include "Satellite.hpp"
 #include "WheelController.hpp"
 #include <iostream>
@@ -13,18 +14,21 @@ int main() {
   sat.setTargetOrientation(target);
 
   // PID gains
-  double kp = 2.0;
-  double ki = 0.05;
-  double kd = 1.2;
+  double kp = .4;
+  double ki = 0.01;
+  double kd = .6;
   WheelController controller(kp,ki,kd);
 
   const double dt = .1;
 
-  for (int i = 0; i < 500; i++){
+  for (int i = 0; i < 2000; i++){
     // get torque for each reaction wheel axis
     Eigen::Vector3d torques = controller.computeWheelTorques(
         sat.getOrientation(), target, sat.getAngularVelocity(), dt
     );
+
+    double max_torque = 0.05; // can only rotate so much
+    torques = torques.cwiseMax(-max_torque).cwiseMin(max_torque);
 
     // apply each torque to corresponding wheel axis
 
@@ -44,7 +48,10 @@ int main() {
               << q.w() << ", " << q.x() << ", "
               << q.y() << ", " << q.z() << "\n";
 
-    if (target.angularDistance(q) < 1e-3 && sat.getAngularVelocity().norm() < 1e-3) {
+    std::cout << "  [DEBUG] angularDistance: " << target.angularDistance(q)
+          << " | angularVelocity.norm(): " << sat.getAngularVelocity().norm() << "\n";
+
+    if (target.angularDistance(q) < 1e-1 && sat.getAngularVelocity().norm() < 1e-1) {
     std::cout << "Target reached. Stopping.\n";
     break;
 }
@@ -53,3 +60,5 @@ int main() {
   return 0;
 
 }
+
+
