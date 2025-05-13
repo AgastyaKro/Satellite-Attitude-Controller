@@ -13,8 +13,11 @@ class WheelController{
         const Eigen::Vector3d& angular_velocity,
         double dt
     );
-        
-    private:
+
+    void resetIntegral();
+
+
+private:
         double kp_;
         double ki_;
         double kd_;
