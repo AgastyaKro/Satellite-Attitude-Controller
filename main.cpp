@@ -1,90 +1,57 @@
 #include "Satellite.hpp"
 #include "WheelController.hpp"
+#include <Eigen/Geometry>
+#include <fstream>
 #include <iostream>
 #include <iomanip>
-#include <limits>
 
 int main() {
     Satellite sat;
 
-    // Target: 90 degrees rotated around Y-axis
-    Eigen::AngleAxisd rot(M_PI / 2, Eigen::Vector3d::UnitY());
-    Eigen::Quaterniond target(rot);
+    // Target is 90 degrees around Y axis
+    Eigen::Quaterniond target(Eigen::AngleAxisd(M_PI / 2, Eigen::Vector3d::UnitY()));
     sat.setTargetOrientation(target);
 
-    // PID tuning
-    double kp = 0.25;
-    double ki = 0.005;
-    double kd = .1;
-    WheelController controller(kp, ki, kd);
+    WheelController controller(/*kR=*/6.0, /*kOmega=*/4.0);
+    const double dt = 1.0;
 
-    const double dt = 0.1;
-    const double max_pid_torque = 0.02;
-    const double max_brake_torque = 1.5;  // increased
+    std::ofstream out("output.csv");
+    out << "time,w,x,y,z,wx,wy,wz,angleError\n";
 
-    double prev_error = std::numeric_limits<double>::infinity();
+    for (double t = 0.0; t <= 150.0; t += dt) {
+        Eigen::Quaterniond current = sat.getOrientation();
+        Eigen::Vector3d omega = sat.getAngularVelocity();
 
-    for (int i = 0; i < 2000; i++) {
-        Eigen::Quaterniond q = sat.getOrientation();
-        if (q.w() < 0) q.coeffs() *= -1;
+        Eigen::Vector3d torques = controller.computeWheelTorques(current, target, omega, dt);
+        for (int i = 0; i < 3; ++i)
+            sat.applyWheelTorque(i, torques[i], dt);
 
-        double error = target.angularDistance(q);
-        double velocity = sat.getAngularVelocity().norm();
-
-        Eigen::Vector3d torques;
-
-        // Trigger braking early if overshooting near target
-        bool near_target = prev_error < 0.6;
-        bool overshooting = error > prev_error;
-
-
-
-        if (overshooting && near_target) {
-            std::cout << "Overshoot near target. Braking.\n";
-            Eigen::Vector3d braking = -15.0 * sat.getAngularVelocity();  // stronger braking
-            torques = braking.cwiseMax(-max_brake_torque).cwiseMin(max_brake_torque);
-            controller.resetIntegral();
-        } else {
-            // Normal PID torque with light damping
-            torques = controller.computeWheelTorques(q, target, sat.getAngularVelocity(), dt);
-            // Add damping to suppress oscillations
-            double damping_gain = std::clamp(velocity / 5.0, 0.2, 2.5);
-            Eigen::Vector3d damping = -damping_gain * sat.getAngularVelocity();
-            torques += damping;
-            // Clamp total torque to safe limits
-            torques = torques.cwiseMax(-max_pid_torque).cwiseMin(max_pid_torque);
-        }
-
-        // Abort if spinning too fast
-        if (velocity > 10) {
-            std::cout << "Too fast. Aborting.\n";
-            break;
-        }
-
-        // Apply torques to each axis
-        for (int axis = 0; axis < 3; axis++) {
-            sat.applyWheelTorque(axis, torques[axis], dt);
-        }
-
-        // Update orientation
         sat.update(dt);
 
-        // Log state
-        std::cout << std::fixed << std::setprecision(6);
-        std::cout << "t=" << i * dt << " | Orientation (w,x,y,z): "
-                  << q.w() << ", " << q.x() << ", "
-                  << q.y() << ", " << q.z() << "\n";
-        std::cout << "  [DEBUG] angularDistance: " << error
-                  << " | angularVelocity.norm(): " << velocity << "\n";
+        Eigen::Quaterniond errQ = target * current.conjugate();
+        if (errQ.w() < 0.0) errQ.coeffs() *= -1;
+        double angleError = 2.0 * std::acos(std::clamp(errQ.w(), -1.0, 1.0));
 
-        prev_error = error;
-
-        // Stop if close to target and nearly stationary
-        if (error < 0.05 && velocity < 0.1) {
-            std::cout << "Target reached. Stopping.\n";
-            break;
+        if (static_cast<int>(t) % 10 == 0) {
+            std::cout << std::fixed << std::setprecision(1)
+                      << "t=" << t
+                      << "  orient=(w:" << current.w()
+                      << ", x:" << current.x()
+                      << ", y:" << current.y()
+                      << ", z:" << current.z()
+                      << ")  angVel=(x:" << omega[0]
+                      << ", y:" << omega[1]
+                      << ", z:" << omega[2]
+                      << ")  angleError=" << angleError << "\n";
         }
+
+        out << std::fixed << std::setprecision(5)
+            << t << "," << current.w() << "," << current.x() << "," << current.y() << "," << current.z() << ","
+            << omega[0] << "," << omega[1] << "," << omega[2] << ","
+            << angleError << "\n";
     }
 
+    out.close();
+    std::system("cp output.csv .."); // optional
     return 0;
 }

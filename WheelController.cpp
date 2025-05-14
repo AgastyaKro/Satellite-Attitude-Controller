@@ -1,47 +1,38 @@
 #include "WheelController.hpp"
+#include <cmath>
 
-WheelController::WheelController(double kp, double ki, double kd) 
-                                : kp_(kp), ki_(ki), kd_(kd), accumulated_error_(Eigen::Vector3d::Zero()){}
+WheelController::WheelController(double kR, double kOmega)
+        : kR_(kR), kOmega_(kOmega) {}
 
 Eigen::Vector3d WheelController::computeWheelTorques(
-    const Eigen::Quaterniond& current,
-    const Eigen::Quaterniond& target,
-    const Eigen::Vector3d& angular_velocity,
-    double dt
+        const Eigen::Quaterniond& current,
+        const Eigen::Quaterniond& target,
+        const Eigen::Vector3d& angularVelocity,
+        double /* deltaTime */
 ) {
-    // Compute rotation difference (shortest rotation from current → target)
-    Eigen::Quaterniond error_quat = target * current.conjugate();
-    if (error_quat.w() < 0) error_quat.coeffs() *= -1; // fastest path
+    // 1. Compute relative rotation error: Q_err = Q_target * Q_current.inverse()
+    Eigen::Quaterniond qErr = target * current.conjugate();
+    if (qErr.w() < 0) qErr.coeffs() *= -1;
 
-    Eigen::AngleAxisd axis_angle(error_quat);
-    Eigen::Vector3d orientation_error = axis_angle.axis() * axis_angle.angle();
+    // 2. Convert to axis-angle error vector
+    double angle = 2.0 * std::acos(std::clamp(qErr.w(), -1.0, 1.0));
+    double sin_half = std::sqrt(1.0 - qErr.w() * qErr.w());
+    Eigen::Vector3d axis;
+    if (sin_half < 1e-6)
+        axis = Eigen::Vector3d::Zero();
+    else
+        axis = qErr.vec() / sin_half;
+    Eigen::Vector3d eR = axis * angle;
 
-    // Stop accumulating error when near target
-    if (axis_angle.angle() < 1e-3 && angular_velocity.norm() < 1e-3) {
-        accumulated_error_.setZero();
-        return Eigen::Vector3d::Zero(); // No more torque needed
-    }
+    // 3. Angular velocity error: e_omega = ω (assuming desired ω = 0)
+    Eigen::Vector3d eOmega = angularVelocity;
 
-    // Integral accumulation with clamping
-    accumulated_error_ += orientation_error * dt;
-    double max_integral = 0.01;
-    accumulated_error_ = accumulated_error_.cwiseMax(-max_integral).cwiseMin(max_integral);
+    // 4. Control torque
+    Eigen::Vector3d torque = -kR_ * eR - kOmega_ * eOmega;
 
-    if (angular_velocity.norm() > 2.0)
-        accumulated_error_.setZero();
+    const double maxTorque = 2.0;
+    if (torque.norm() > maxTorque)
+        torque = torque.normalized() * maxTorque;
 
-    // PID terms
-    Eigen::Vector3d p_term = kp_ * orientation_error;
-    Eigen::Vector3d i_term = ki_ * accumulated_error_;
-    Eigen::Vector3d d_term = kd_ * angular_velocity;
-
-    // Negative feedback + some gaurding
-    Eigen::Vector3d torque = -p_term - i_term - d_term;
-    double max_output = 0.02;
-    torque = torque.cwiseMax(-max_output).cwiseMin(max_output);
     return torque;
-}
-
-void WheelController::resetIntegral() {
-    accumulated_error_.setZero();
 }

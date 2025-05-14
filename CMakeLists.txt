@@ -1,18 +1,17 @@
-cmake_minimum_required(VERSION 3.14)
-project(SatelliteSim)
+cmake_minimum_required(VERSION 3.10)
+project(SatelliteLQR)
 
 set(CMAKE_CXX_STANDARD 17)
 
-#add eigen
+# Include Eigen
 find_package(Eigen3 REQUIRED)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
-add_executable(SatelliteSim
-main.cpp
-Satellite.cpp
-ReactionWheel.cpp
-WheelController.cpp
+include_directories(include)
 
+add_executable(satellite_sim
+        main.cpp
+        src/Satellite.cpp
+        src/LQRController.cpp
 )
 
-target_link_libraries(SatelliteSim Eigen3::Eigen)

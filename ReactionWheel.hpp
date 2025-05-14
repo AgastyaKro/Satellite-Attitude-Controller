@@ -1,24 +1,20 @@
-#pragma once
-#include <Eigen/Dense>
-
+// ReactionWheel.hpp
+#ifndef REACTIONWHEEL_HPP
+#define REACTIONWHEEL_HPP
 
 class ReactionWheel {
-    public:
-        ReactionWheel(double inertia); 
+public:
+    explicit ReactionWheel(double wheelInertia = 1.0);
 
-        // Apply motor torque to the wheel and update it's speed
-        void applyTorque(double torque, double dt);
+    // apply torque for deltaTime seconds
+    void applyTorque(double torque, double deltaTime);
 
-        // Get torque which needs to applied to satellite 
-        double getReactionTorque() const;
+    // current wheel spin rate (rad/s)
+    double getAngularVelocity() const;
 
-        // Get current wheel speed
-        double getAngularVelocity() const;
-
-
-    private:
-        double inertia_;    // Moment of inertia of the wheel (scalar)
-        double angular_velocity_; // Wheel's current spin rate (rad/s)
-        double last_applied_torque_; // Last applied torque for satellite reaction
-
+private:
+    double inertia_;
+    double angularVelocity_;
 };
+
+#endif // REACTIONWHEEL_HPP

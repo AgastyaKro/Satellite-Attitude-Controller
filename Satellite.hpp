@@ -1,32 +1,32 @@
-#pragma once
+// Satellite.hpp
+#ifndef SATELLITE_HPP
+#define SATELLITE_HPP
+
 #include <Eigen/Dense>
 #include <Eigen/Geometry>
-#include <vector>
 #include "ReactionWheel.hpp"
-
+#include <array>
 
 class Satellite {
-    public:
-        Satellite();
+public:
+    Satellite();
 
-        void applyWheelTorque(int wheel_index, double torque, double dt);
-        void update(double dt); // updates the satellite orientation 
+    void update(double dt, const Eigen::Vector3d& controlTorque);
+    const Eigen::Quaterniond& getOrientation() const;
+    const Eigen::Vector3d& getAngularVelocity() const;
+    void setTargetOrientation(const Eigen::Quaterniond& target_orientation);
 
-        void setTargetOrientation(const Eigen::Quaterniond& target);
-        Eigen::Quaterniond getOrientation() const;
-        Eigen::Vector3d getAngularVelocity() const;
-        double getWheelSpeed(int wheel_index) const;  
-
-
-    private:
-
-        Eigen::Quaterniond orientation;     // current orientation
-        Eigen::Vector3d angular_velocity;   // in rad/s
-        Eigen::Quaterniond target_orientation; 
-        std::vector<ReactionWheel> wheels; // 1 wheel per axis, x,y,z
-        Eigen::Matrix3d inertia_tensor_inv; // moment of inertia tensor inverse
-
-        void applyBodyTorque(const Eigen::Vector3d& torque, double dt);
+    Eigen::VectorXd computeStateError() const;
 
 
+private:
+    Eigen::Quaterniond orientation_;      // Current orientation as quaternion
+    Eigen::Vector3d angular_velocity_;    // Angular velocity in body frame
+    Eigen::Quaterniond target_orientation_;
+
+    Eigen::Matrix3d inertia_matrix_;
+    Eigen::Matrix3d inverse_inertia_matrix_;
 };
+};
+
+#endif // SATELLITE_HPP

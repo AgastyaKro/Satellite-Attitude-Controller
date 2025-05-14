@@ -1,61 +1,52 @@
+// Satellite.cpp
 #include "Satellite.hpp"
-// #include <iostream> // for debugging later w/ std::cout
+#include <Eigen/Geometry>
 
-Satellite::Satellite() : orientation(Eigen::Quaterniond::Identity()), // w,x,y,z = 1,0,0,0
-                         angular_velocity(Eigen::Vector3d::Zero()), // x,y,z = 0,0,0
-                         inertia_tensor_inv(Eigen::Matrix3d::Identity().inverse()),
-                         wheels{ ReactionWheel(0.1), ReactionWheel(0.1), ReactionWheel(0.1)}
-                         {}
+Satellite::Satellite() {
+    orientation_ = Eigen::Quaterniond::Identity();
+    angular_velocity_.setZero();
 
-/* Old torque application process not including wheels
-void Satellite::applyTorque(const Eigen::Vector3d& torque, double dt) { // torque + how long it was applied for
-        Eigen::Vector3d angular_acceleration = inertia.inverse() * torque; // T/I
-        angular_velocity += angular_acceleration * dt;
-}
-*/
-
-void Satellite::applyWheelTorque(int wheel_index, double torque, double dt){
-    if (wheel_index < 0 || wheel_index >= wheels.size())
-        return;
-    
-    wheels[wheel_index].applyTorque(torque, dt);
-
-    // applying reaction torque to the satellite
-    Eigen::Vector3d torque_vector = Eigen::Vector3d::Zero();
-    torque_vector[wheel_index] = wheels[wheel_index].getReactionTorque();
-    applyBodyTorque(torque_vector, dt);
+    inertia_matrix_ = Eigen::Matrix3d::Identity();
+    inertia_matrix_(0, 0) = 230;
+    inertia_matrix_(1, 1) = 240;
+    inertia_matrix_(2, 2) = 25;
+    inverse_inertia_matrix_ = inertia_matrix_.inverse();
 }
 
-double Satellite::getWheelSpeed(int wheel_index) const {
-    if (wheel_index >= 0 && wheel_index < wheels.size()) {
-        return wheels[wheel_index].getAngularVelocity();
-    }
-    return 0.0;
+void Satellite::setTargetOrientation(const Eigen::Quaterniond& target_orientation) {
+    target_orientation_ = target_orientation.normalized();
 }
 
-void Satellite::applyBodyTorque(const Eigen::Vector3d& torque, double dt){
-    Eigen::Vector3d angular_acceleration = inertia_tensor_inv * torque;
-    angular_velocity += angular_acceleration * dt;
+const Eigen::Quaterniond& Satellite::getOrientation() const {
+    return orientation_;
 }
 
-
-void Satellite::update(double dt){
-    Eigen::Quaterniond omega(0, angular_velocity[0], angular_velocity[1], angular_velocity[2]); // angular vel -> quarternion
-    Eigen::Quaterniond delta_rotation = (omega * orientation); // how orientation changes right now derivative
-    delta_rotation.coeffs() *= 0.5 * dt; // scales derivative to time step, ie quarternion math
-    orientation.coeffs() += delta_rotation.coeffs(); // applies the small rotation
-    orientation.normalize(); // normalizes to remove math error build-up
+const Eigen::Vector3d& Satellite::getAngularVelocity() const {
+    return angular_velocity_;
 }
 
-void Satellite::setTargetOrientation(const Eigen::Quaterniond& target){
-    target_orientation = target; 
+Eigen::VectorXd Satellite::computeStateError() const {
+    Eigen::Quaterniond error_quaternion = target_orientation_ * orientation_.inverse();
+    if (error_quaternion.w() < 0) error_quaternion.coeffs() *= -1;
+
+    Eigen::AngleAxisd error_axis_angle(error_quaternion);
+    Eigen::VectorXd state_error(6);
+    state_error.segment<3>(0) = error_axis_angle.angle() * error_axis_angle.axis();
+    state_error.segment<3>(3) = angular_velocity_;
+    return state_error;
 }
 
-Eigen::Quaterniond Satellite::getOrientation() const{
-    return orientation;
-}
+void Satellite::update(double timestep, const Eigen::Vector3d& control_torque) {
+    Eigen::Vector3d angular_acceleration = inverse_inertia_matrix_ *
+                                           (control_torque - angular_velocity_.cross(inertia_matrix_ * angular_velocity_));
 
-Eigen::Vector3d Satellite::getAngularVelocity() const {
-    return angular_velocity;
+    angular_velocity_ += angular_acceleration * timestep;
+
+    Eigen::Vector3d delta_theta = angular_velocity_ * timestep;
+    double angle = delta_theta.norm();
+    Eigen::Quaterniond delta_quaternion = angle < 1e-8 ? Eigen::Quaterniond::Identity()
+                                                       : Eigen::Quaterniond(Eigen::AngleAxisd(angle, delta_theta.normalized()));
+
+    orientation_ = (delta_quaternion * orientation_).normalized();
 }
 

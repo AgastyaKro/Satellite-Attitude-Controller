@@ -2,25 +2,18 @@
 #include <Eigen/Dense>
 #include <Eigen/Geometry>
 
-class WheelController{
-
-    public:
-        WheelController(double kp, double ki, double kd);
+class WheelController {
+public:
+    WheelController(double kR, double kOmega);
 
     Eigen::Vector3d computeWheelTorques(
-        const Eigen::Quaterniond& current,
-        const Eigen::Quaterniond& target,
-        const Eigen::Vector3d& angular_velocity,
-        double dt
+            const Eigen::Quaterniond& current,
+            const Eigen::Quaterniond& target,
+            const Eigen::Vector3d& angularVelocity,
+            double deltaTime
     );
 
-    void resetIntegral();
-
-
 private:
-        double kp_;
-        double ki_;
-        double kd_;
-        Eigen::Vector3d accumulated_error_;
-
+    double kR_;       // attitude gain
+    double kOmega_;   // angular velocity gain
 };
