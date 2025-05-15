@@ -8,7 +8,7 @@ This project simulates a satellite's attitude stabilization using a Linear Quadr
 
 It should be noted that for these visualizations, the target orientation was 90 degrees around the y-axis, while our current orientation was 0 degrees on all axis. 
 We don't exactly land on the target because the LQR tuning isn't exactly perfect, so we hover "very" close to our target and then oscillate. 
-singularity
+
 
 ---
 
