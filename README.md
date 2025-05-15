@@ -1,47 +1,60 @@
-# Satellite Attitude Control Simulator
+# Satellite Attitude Controller
 
-A C++ simulation of a satellite’s attitude (3D orientation) control system using quaternions, torque modeling, and a PID feedback loop. The simulator models how satellites use actuators like reaction wheels to control their orientation in space — a core feature of all spacecraft.
+This project simulates a satellite's attitude stabilization using a Linear Quadratic Regulator (LQR). The controller commands torques to reaction wheels to align the satellite's orientation with a target quaternion. Orientation is represented and integrated using quaternions for stability and singularity-free behavior.
+
+---
 
 ## Overview
 
-This project simulates:
-- The rotational dynamics of a satellite in free space
-- The application of torques via virtual actuators
-- A PID controller that drives the satellite to a target orientation
-- Quaternion-based orientation updates to avoid gimbal lock
+- **State Representation:**  
+  The state vector is `[ω; θ_err]` where:
+  - `ω` is the 3D angular velocity vector
+  - `θ_err` is a 3D vector derived from the angle-axis representation of the quaternion error (target ⊗ current⁻¹)
 
-This kind of system is found in real spacecraft, from CubeSats to Starlink satellites, and is critical for camera aiming, antenna pointing, and solar alignment.
+- **Dynamics:**  
+  Uses **Euler’s rotational equations** for rigid body motion, integrating the quaternion orientation over time.
 
----
-
-## Features
-
-- Quaternion-based orientation tracking  
-- Rigid body physics with moment of inertia  
-- Time-stepped simulation loop  
-- Virtual torque input  
-- PID controller (in progress)  
-- Optional 3D visualization (coming soon)  
+- **Controller:**  
+  An infinite-horizon **LQR controller** is computed from a linearized 6D state-space model:
+  - Linearized about the identity orientation
+  - Incorporates damping
+  - Penalizes state deviation and control effort via matrices `Q` and `R`
 
 ---
 
-## Core Concepts
+## Simulation Output
 
-- **Quaternions** for stable 3D orientation representation  
-- **Torque → Angular Acceleration → Angular Velocity → Orientation**  
-- **Moment of Inertia Tensor** to model realistic rotational inertia  
-- **PID Control** to stabilize and reorient the satellite  
+- The system logs:
+  - Time
+  - Orientation quaternion `[w, x, y, z]`
+  - Angular velocity `[ωx, ωy, ωz]`
+  - Commanded torque
+  - Error state
+
+- Example plot showing orientation convergence over time:
+
+<p align="center">
+  <img src="assets/orientation_plot.png" width="500"/>
+</p>
 
 ---
 
-## Demo (Sample Output)
+## 📄 Reference
 
-## Project Layout
+The controller and dynamics formulation are inspired by:
 
-SatelliteSim/
-├── main.cpp               # Simulation runner
-├── Satellite.hpp/.cpp     # Satellite physics and control
-├── Controller.hpp/.cpp    # PID control system (coming soon)
-├── Quaternion.hpp/.cpp    # Quaternion math wrapper (using Eigen)
-├── utils.hpp              # Timestep helpers and math
-├── CMakeLists.txt         # CMake project setup
+**Liu, R., & Zhang, G. (2015).**  
+*Attitude control of spacecraft using quaternion feedback and LQR method.*  
+IFAC-PapersOnLine, 48(1), 775–780.  
+[https://doi.org/10.1016/j.ifacol.2015.05.159](https://doi.org/10.1016/j.ifacol.2015.05.159)
+
+---
+
+## How to Run
+
+1. **Build the project** (CMake):
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   make
+   ./SatelliteController
