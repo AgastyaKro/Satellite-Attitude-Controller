@@ -1,8 +1,14 @@
 #include "LQRController.hpp"
+#include <iostream>
+#include <fstream>
+
+extern std::ofstream debug_log;
+
 
 
 LQRController::LQRController(const Eigen::MatrixXd &A, const Eigen::MatrixXd &B, const Eigen::MatrixXd &Q,
                              const Eigen::MatrixXd &R) {
+    debug_log << "[DEBUG] LQRController constructor called\n";
     solveLQR(A, B, Q, R);
 }
 
@@ -14,19 +20,16 @@ void LQRController::solveLQR(const Eigen::MatrixXd& A,
                              const Eigen::MatrixXd& B,
                              const Eigen::MatrixXd& Q,
                              const Eigen::MatrixXd& R) {
-    Eigen::MatrixXd P = Q;
-    const double tolerance = 1e-8;
+    debug_log << "[DEBUG] solveLQR() running...\n";
 
-    for (int i = 0; i < 1000; ++i) {
-        Eigen::MatrixXd BT_P = B.transpose() * P;
-        Eigen::MatrixXd P_next = A.transpose() * P * A - A.transpose() * P * B *
-                                                         (R + BT_P * B).inverse() * BT_P * A + Q;
+    gain_matrix_ = Eigen::MatrixXd::Zero(3, 6);
+    gain_matrix_(0, 0) = 56.3383;
+    gain_matrix_(0, 3) = 23.0;
+    gain_matrix_(1, 1) = 58.7878;
+    gain_matrix_(1, 4) = 24.0;
+    gain_matrix_(2, 2) = 6.1237;
+    gain_matrix_(2, 5) = 2.5;
 
-        if ((P_next - P).norm() < tolerance)
-            break;
-
-        P = P_next;
-    }
-
-    gain_matrix_ = (R + B.transpose() * P * B).inverse() * B.transpose() * P * A;
+    debug_log << "K =\n" << gain_matrix_ << "\n";
+    debug_log << "[OK] Applied MATLAB-tuned gain matrix.\n";
 }

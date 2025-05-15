@@ -81,12 +81,12 @@ clean: CMakeFiles/SatelliteSim.dir/clean
 CMakeFiles/SatelliteSim.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles --progress-num=1,2,3,4,5 "Built target SatelliteSim"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target SatelliteSim"
 .PHONY : CMakeFiles/SatelliteSim.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/SatelliteSim.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/SatelliteSim.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/build/CMakeFiles 0
 .PHONY : CMakeFiles/SatelliteSim.dir/rule

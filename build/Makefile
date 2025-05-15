@@ -129,101 +129,173 @@ SatelliteSim/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/build
 .PHONY : SatelliteSim/fast
 
-ReactionWheel.o: ReactionWheel.cpp.o
-.PHONY : ReactionWheel.o
+src/Controller.o: src/Controller.cpp.o
+.PHONY : src/Controller.o
 
 # target to build an object file
-ReactionWheel.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o
-.PHONY : ReactionWheel.cpp.o
+src/Controller.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/Controller.cpp.o
+.PHONY : src/Controller.cpp.o
 
-ReactionWheel.i: ReactionWheel.cpp.i
-.PHONY : ReactionWheel.i
+src/Controller.i: src/Controller.cpp.i
+.PHONY : src/Controller.i
 
 # target to preprocess a source file
-ReactionWheel.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.i
-.PHONY : ReactionWheel.cpp.i
+src/Controller.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/Controller.cpp.i
+.PHONY : src/Controller.cpp.i
 
-ReactionWheel.s: ReactionWheel.cpp.s
-.PHONY : ReactionWheel.s
+src/Controller.s: src/Controller.cpp.s
+.PHONY : src/Controller.s
 
 # target to generate assembly for a file
-ReactionWheel.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.s
-.PHONY : ReactionWheel.cpp.s
+src/Controller.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/Controller.cpp.s
+.PHONY : src/Controller.cpp.s
 
-Satellite.o: Satellite.cpp.o
-.PHONY : Satellite.o
+src/LQRController.o: src/LQRController.cpp.o
+.PHONY : src/LQRController.o
 
 # target to build an object file
-Satellite.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Satellite.cpp.o
-.PHONY : Satellite.cpp.o
+src/LQRController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/LQRController.cpp.o
+.PHONY : src/LQRController.cpp.o
 
-Satellite.i: Satellite.cpp.i
-.PHONY : Satellite.i
+src/LQRController.i: src/LQRController.cpp.i
+.PHONY : src/LQRController.i
 
 # target to preprocess a source file
-Satellite.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Satellite.cpp.i
-.PHONY : Satellite.cpp.i
+src/LQRController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/LQRController.cpp.i
+.PHONY : src/LQRController.cpp.i
 
-Satellite.s: Satellite.cpp.s
-.PHONY : Satellite.s
+src/LQRController.s: src/LQRController.cpp.s
+.PHONY : src/LQRController.s
 
 # target to generate assembly for a file
-Satellite.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/Satellite.cpp.s
-.PHONY : Satellite.cpp.s
+src/LQRController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/LQRController.cpp.s
+.PHONY : src/LQRController.cpp.s
 
-WheelController.o: WheelController.cpp.o
-.PHONY : WheelController.o
+src/Quaternion.o: src/Quaternion.cpp.o
+.PHONY : src/Quaternion.o
 
 # target to build an object file
-WheelController.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/WheelController.cpp.o
-.PHONY : WheelController.cpp.o
+src/Quaternion.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/Quaternion.cpp.o
+.PHONY : src/Quaternion.cpp.o
 
-WheelController.i: WheelController.cpp.i
-.PHONY : WheelController.i
+src/Quaternion.i: src/Quaternion.cpp.i
+.PHONY : src/Quaternion.i
 
 # target to preprocess a source file
-WheelController.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/WheelController.cpp.i
-.PHONY : WheelController.cpp.i
+src/Quaternion.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/Quaternion.cpp.i
+.PHONY : src/Quaternion.cpp.i
 
-WheelController.s: WheelController.cpp.s
-.PHONY : WheelController.s
+src/Quaternion.s: src/Quaternion.cpp.s
+.PHONY : src/Quaternion.s
 
 # target to generate assembly for a file
-WheelController.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/WheelController.cpp.s
-.PHONY : WheelController.cpp.s
+src/Quaternion.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/Quaternion.cpp.s
+.PHONY : src/Quaternion.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/ReactionWheel.o: src/ReactionWheel.cpp.o
+.PHONY : src/ReactionWheel.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/ReactionWheel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/ReactionWheel.cpp.o
+.PHONY : src/ReactionWheel.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/ReactionWheel.i: src/ReactionWheel.cpp.i
+.PHONY : src/ReactionWheel.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/ReactionWheel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/ReactionWheel.cpp.i
+.PHONY : src/ReactionWheel.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/ReactionWheel.s: src/ReactionWheel.cpp.s
+.PHONY : src/ReactionWheel.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/ReactionWheel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/ReactionWheel.cpp.s
+.PHONY : src/ReactionWheel.cpp.s
+
+src/Satellite.o: src/Satellite.cpp.o
+.PHONY : src/Satellite.o
+
+# target to build an object file
+src/Satellite.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/Satellite.cpp.o
+.PHONY : src/Satellite.cpp.o
+
+src/Satellite.i: src/Satellite.cpp.i
+.PHONY : src/Satellite.i
+
+# target to preprocess a source file
+src/Satellite.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/Satellite.cpp.i
+.PHONY : src/Satellite.cpp.i
+
+src/Satellite.s: src/Satellite.cpp.s
+.PHONY : src/Satellite.s
+
+# target to generate assembly for a file
+src/Satellite.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/Satellite.cpp.s
+.PHONY : src/Satellite.cpp.s
+
+src/WheelController.o: src/WheelController.cpp.o
+.PHONY : src/WheelController.o
+
+# target to build an object file
+src/WheelController.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/WheelController.cpp.o
+.PHONY : src/WheelController.cpp.o
+
+src/WheelController.i: src/WheelController.cpp.i
+.PHONY : src/WheelController.i
+
+# target to preprocess a source file
+src/WheelController.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/WheelController.cpp.i
+.PHONY : src/WheelController.cpp.i
+
+src/WheelController.s: src/WheelController.cpp.s
+.PHONY : src/WheelController.s
+
+# target to generate assembly for a file
+src/WheelController.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/WheelController.cpp.s
+.PHONY : src/WheelController.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/SatelliteSim.dir/build.make CMakeFiles/SatelliteSim.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -234,18 +306,27 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... SatelliteSim"
-	@echo "... ReactionWheel.o"
-	@echo "... ReactionWheel.i"
-	@echo "... ReactionWheel.s"
-	@echo "... Satellite.o"
-	@echo "... Satellite.i"
-	@echo "... Satellite.s"
-	@echo "... WheelController.o"
-	@echo "... WheelController.i"
-	@echo "... WheelController.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... src/Controller.o"
+	@echo "... src/Controller.i"
+	@echo "... src/Controller.s"
+	@echo "... src/LQRController.o"
+	@echo "... src/LQRController.i"
+	@echo "... src/LQRController.s"
+	@echo "... src/Quaternion.o"
+	@echo "... src/Quaternion.i"
+	@echo "... src/Quaternion.s"
+	@echo "... src/ReactionWheel.o"
+	@echo "... src/ReactionWheel.i"
+	@echo "... src/ReactionWheel.s"
+	@echo "... src/Satellite.o"
+	@echo "... src/Satellite.i"
+	@echo "... src/Satellite.s"
+	@echo "... src/WheelController.o"
+	@echo "... src/WheelController.i"
+	@echo "... src/WheelController.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

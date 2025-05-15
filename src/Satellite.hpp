@@ -18,6 +18,9 @@ public:
 
     Eigen::VectorXd computeStateError() const;
 
+    const Eigen::Matrix3d& getInverseInertiaMatrix() const;
+
+
 
 private:
     Eigen::Quaterniond orientation_;      // Current orientation as quaternion
@@ -26,7 +29,6 @@ private:
 
     Eigen::Matrix3d inertia_matrix_;
     Eigen::Matrix3d inverse_inertia_matrix_;
-};
 };
 
 #endif // SATELLITE_HPP

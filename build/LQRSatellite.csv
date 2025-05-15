@@ -1,0 +1,6 @@
+[DEBUG] LQRController constructor called
+[DEBUG] solveLQR() running...
+LQR gain matrix K =
+0 0 0 0 0 0
+0 0 0 0 0 0
+0 0 0 0 0 0

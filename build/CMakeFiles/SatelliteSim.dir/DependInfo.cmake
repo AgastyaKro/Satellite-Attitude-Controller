@@ -8,10 +8,13 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/ReactionWheel.cpp" "CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/ReactionWheel.cpp.o.d"
-  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/Satellite.cpp" "CMakeFiles/SatelliteSim.dir/Satellite.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/Satellite.cpp.o.d"
-  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/WheelController.cpp" "CMakeFiles/SatelliteSim.dir/WheelController.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/WheelController.cpp.o.d"
-  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/main.cpp" "CMakeFiles/SatelliteSim.dir/main.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/main.cpp.o.d"
+  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/src/Controller.cpp" "CMakeFiles/SatelliteSim.dir/src/Controller.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/src/Controller.cpp.o.d"
+  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/src/LQRController.cpp" "CMakeFiles/SatelliteSim.dir/src/LQRController.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/src/LQRController.cpp.o.d"
+  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/src/Quaternion.cpp" "CMakeFiles/SatelliteSim.dir/src/Quaternion.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/src/Quaternion.cpp.o.d"
+  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/src/ReactionWheel.cpp" "CMakeFiles/SatelliteSim.dir/src/ReactionWheel.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/src/ReactionWheel.cpp.o.d"
+  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/src/Satellite.cpp" "CMakeFiles/SatelliteSim.dir/src/Satellite.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/src/Satellite.cpp.o.d"
+  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/src/WheelController.cpp" "CMakeFiles/SatelliteSim.dir/src/WheelController.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/src/WheelController.cpp.o.d"
+  "/Users/agastyakrothapalli/Documents/Coding/Satellite-Attitude-Controller/src/main.cpp" "CMakeFiles/SatelliteSim.dir/src/main.cpp.o" "gcc" "CMakeFiles/SatelliteSim.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
