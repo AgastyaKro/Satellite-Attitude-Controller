@@ -11,14 +11,14 @@ This project simulates a satellite's attitude stabilization using a Linear Quadr
   <img src="assets/Satellite-Orientation.png" width="600"/>
 </p>
 
-### Component-wise Orientation
-<p align="center">
-  <img src="assets/Satellite-Components.png" width="600"/>
-</p>
-
 ### Angular Velocity Convergence
 <p align="center">
   <img src="assets/Satellite-Angular-Velocity.png" width="600"/>
+</p>
+
+### Component-Wise Orientation
+<p align="center">
+  <img src="assets/Satellite-Components.png" width="600"/>
 </p>
 ---
 
