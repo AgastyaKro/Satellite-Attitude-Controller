@@ -40,7 +40,7 @@ int main() {
     LQRController controller(A, B, Q, R);
 
     const double timestep = 0.01;
-    const int steps = 1000;
+    const int steps = 6000;
     std::ofstream log_file("satellite_output.csv");
     log_file << "time,qw,qx,qy,qz,wx,wy,wz\n";
 
