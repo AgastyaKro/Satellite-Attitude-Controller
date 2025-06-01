@@ -14,7 +14,6 @@ It should be noted that for these visualizations, the target orientation was 90 
 <p align="center">
   <img src="assets/Satellite-Components.png" width="600"/>
 </p>
----
 
 ## Overview
 
