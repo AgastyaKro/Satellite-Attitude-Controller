@@ -1,63 +1,65 @@
 # Satellite Attitude Controller
 
-This project simulates a satellite's attitude stabilization using a Linear Quadratic Regulator (LQR). The controller commands torques to reaction wheels to align the satellite's orientation with a target quaternion. Orientation is represented and integrated using quaternions for stability and singularity-free behavior.
+This project simulates a satellite's attitude stabilization using independent **PID controllers** for each rotational axis. The controller applies torque via actuators (e.g., gas thrusters) to align the satellite’s orientation with a target quaternion. Orientation is represented and integrated using quaternions to avoid gimbal lock and ensure smooth 3D rotation.
 
 ---
 
 ## Visualizations
 
-It should be noted that for these visualizations, the target orientation was 90 degrees around the y-axis, while our current orientation was 0 degrees on all axes. 
+For these visualizations, the satellite starts at 0 degrees on all axes. The target orientation is a 90-degree rotation around the y-axis.
 
 ---
 
 ### Component-Wise Orientation
+
 <p align="center">
   <img src="assets/Satellite-Components.png" width="600"/>
 </p>
 
 ## Overview
 
-- **State Representation:**  
-  The state vector is `[ω; θ_err]` where:
-  - `ω` is the 3D angular velocity vector
-  - `θ_err` is a 3D vector derived from the angle-axis representation of the quaternion error (target ⊗ current⁻¹)
+* **State Representation:**
+  The system tracks:
 
-- **Dynamics:**  
-  Uses **Euler’s rotational equations** for rigid body motion, integrating the quaternion orientation over time.
+  * Angular velocity vector `ω = [ωx, ωy, ωz]`
+  * Orientation quaternion `q = [w, x, y, z]`
+  * Quaternion error `q_err = q_target ⊗ q_current⁻¹`
+  * Angle-axis representation extracted from `q_err` to compute PID error per axis
 
-- **Controller:**  
-  An infinite-horizon **LQR controller** is computed from a linearized 6D state-space model:
-  - Linearized about the identity orientation
-  - Incorporates damping
-  - Penalizes state deviation and control effort via matrices `Q` and `R`
+* **Dynamics:**
+  Simulates satellite rotation using **Euler’s rotational equations** for rigid body dynamics. Quaternion orientation is integrated over time to update the satellite’s pose.
+
+* **Controller:**
+  A **separate PID controller** (Proportional-Integral-Derivative) is used for each axis (roll, pitch, yaw):
+
+  * Proportional term reduces immediate error
+  * Integral term addresses steady-state error
+  * Derivative term damps the response
+  * Each controller operates on the angle-axis error components
 
 ---
 
 ## Simulation Output
 
-- The system logs:
-  - Time
-  - Orientation quaternion `[w, x, y, z]`
-  - Angular velocity `[ωx, ωy, ωz]`
-  - Commanded torque
-  - Error state
+* The simulation logs:
 
-## 📄 Reference
+  * Time
+  * Orientation quaternion `[w, x, y, z]`
+  * Angular velocity `[ωx, ωy, ωz]`
+  * PID errors (per axis)
+  * Commanded torque (per axis)
+  * Cumulative orientation error
 
-The controller and dynamics formulation are inspired by:
-
-**Liu, R., & Zhang, G. (2015).**  
-*Attitude control of spacecraft using quaternion feedback and LQR method.*  
-IFAC-PapersOnLine, 48(1), 775–780.  
-[https://doi.org/10.1016/j.ifacol.2015.05.159](https://doi.org/10.1016/j.ifacol.2015.05.159)
-
----
 
 ## How to Run
 
 1. **Build the project** (CMake):
+
    ```bash
    mkdir build && cd build
    cmake ..
    make
    ./SatelliteController
+   ```
+
+---
